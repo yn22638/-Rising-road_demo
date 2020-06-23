@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CSS3轮播</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+            user-select: none;
+        }
+        body{
+            background-color: #333;
+        }
+        li{
+            list-style: none;
+        }
+        input{
+            display: none;
+        }
+
+        .frame{
+            display:block;
+            position:relative;
+            width:700px;
+            height:300px;
+            margin: 10px auto;
+        }
+         .img{
+             display:block;
+             position:absolute;
+             top:0;
+             opacity:0;
+             width:700px;
+             height:300px;
+             transform:scale(0);
+             transition:all .7s ease-in-out;
+        }
+        .img img{
+            width: 100%;
+            height: 100%;
+        }
+        .frame .slide-content .nav label{
+            display: none;
+            position: absolute;
+            top:0;
+            height: 100%;
+            width: 150px;
+            background-color: rgba(255,255,255,.2);
+            font-size: 160px;
+            text-align: center;
+            line-height: 300px;
+            color: rgba(255,255,255,.2);
+            opacity: 0;
+            cursor: pointer;
+        }
+        .frame .slide-content .prev{
+            left: 0;
+        }
+        .frame .slide-content .next{
+            right: 0;
+        }
+        input:checked + .slide-content .nav label{
+            display: block;
+        }
+        .frame .slide-content:hover > .nav label{
+            opacity: 1;
+        }
+        .frame .slide-content .nav label:hover{
+            background-color: rgba(255,255,255,.5);
+            color: #fff;
+        }
+        input:checked + .slide-content .img{
+            opacity: 1;
+            transform:scale(1);
+            transition:opacity 1s ease-in-out;
+        }
+        .frame .btn {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 5px;
+        }
+        .frame .btn .nav-dot{
+            top:-5px;
+            width:10px;
+            height:10px;
+            margin:0 4px;
+            position:relative;
+            border: solid 2px #c7b279;
+            border-radius:100%;
+            display:inline-block;
+            background-color:#fff;
+            cursor: pointer;
+        }
+
+        input#img-1:checked ~ .btn label#nav-dot-1,
+        input#img-2:checked ~ .btn label#nav-dot-2,
+        input#img-3:checked ~ .btn label#nav-dot-3,
+        input#img-4:checked ~ .btn label#nav-dot-4,
+        input#img-5:checked ~ .btn label#nav-dot-5,
+        input#img-6:checked ~ .btn label#nav-dot-6{
+            background-color: #c7b279;
+        }
+    </style>
+</head>
+<body>
+    <ul class="frame">
+        <input type="radio" name="radio-btn" id="img-1" checked>
+        <li class="slide-content">
+            <div class="img">
+                <img src="https://ss2.bdstatic.com/70cFvnSh_Q1YnxGkpoWK1HF6hhy/it/u=1737185078,3276013336&fm=27&gp=0.jpg" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-6" class="prev">&#x2039;</label>
+                <label for="img-2" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <input type="radio" name="radio-btn"  id="img-2">
+        <li class="slide-content">
+            <div class="img">
+                <img src="https://ss3.bdstatic.com/70cFv8Sh_Q1YnxGkpoWK1HF6hhy/it/u=1706791533,574261398&fm=27&gp=0.jpg" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-1" class="prev">&#x2039;</label>
+                <label for="img-3" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <input type="radio" name="radio-btn"  id="img-3">
+        <li class="slide-content">
+            <div class="img">
+                <img src="https://ss1.bdstatic.com/70cFuXSh_Q1YnxGkpoWK1HF6hhy/it/u=3496899563,1192384600&fm=27&gp=0.jpg" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-2" class="prev">&#x2039;</label>
+                <label for="img-4" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <input type="radio" name="radio-btn"  id="img-4">
+        <li class="slide-content">
+            <div class="img">
+                <img src="http://f12.baidu.com/it/u=4033134372,29153004&fm=72" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-3" class="prev">&#x2039;</label>
+                <label for="img-5" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <input type="radio" name="radio-btn"  id="img-5">
+        <li class="slide-content">
+            <div class="img">
+                <img src="http://f10.baidu.com/it/u=1259339287,1128679855&fm=72" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-4" class="prev">&#x2039;</label>
+                <label for="img-6" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <input type="radio" name="radio-btn"  id="img-6">
+        <li class="slide-content">
+            <div class="img">
+                <img src="http://f10.baidu.com/it/u=2715776875,366463999&fm=72" alt="">
+            </div>
+            <div class="nav">
+                <label for="img-5" class="prev">&#x2039;</label>
+                <label for="img-1" class="next">&#x203a;</label>
+            </div>
+        </li>
+        <li class="btn">
+            <label for="img-1" class="nav-dot" id="nav-dot-1"></label>
+            <label for="img-2" class="nav-dot" id="nav-dot-2"></label>
+            <label for="img-3" class="nav-dot" id="nav-dot-3"></label>
+            <label for="img-4" class="nav-dot" id="nav-dot-4"></label>
+            <label for="img-5" class="nav-dot" id="nav-dot-5"></label>
+            <label for="img-6" class="nav-dot" id="nav-dot-6"></label>
+        </li>
+    </ul>
+</body>
+</html>
